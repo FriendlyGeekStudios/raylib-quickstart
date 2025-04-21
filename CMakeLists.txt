@@ -9,10 +9,16 @@ endif()
 project ("raylib-quickstart")
 
 # Add source to this project's executable.
-add_executable (raylib-quickstart  "main.cpp")
+add_executable (${PROJECT_NAME}  "main.cpp")
 
 if (CMAKE_VERSION VERSION_GREATER 3.12)
-  set_property(TARGET raylib-quickstart PROPERTY CXX_STANDARD 20)
+  set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 endif()
+
+set(CMAKE_C_STANDARD 11)
+
+find_package(raylib CONFIG REQUIRED)
+
+ target_link_libraries(${PROJECT_NAME} PRIVATE raylib)
 
 # TODO: Add tests and install targets if needed.
